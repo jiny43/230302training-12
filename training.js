@@ -1,49 +1,46 @@
+//element 생성 함수
+function elementMaker(tagName,target) {
+    const element = document.createElement(tagName);
+    target.appendChild(element);
+    }
 
-// body>aside> h1 생성하기
-let aside= document.createElement('aside');
-document.body.appendChild(aside);
-let h1 = document.createElement('h1');
-aside.appendChild(h1)
+const body = document.body;
+    elementMaker('aside', document.body);
+    elementMaker('div', document.body);
+    body.children[1].setAttribute('id','move-btn');
+    body.children[2].setAttribute('id','root');
+//aside root 생성
 
-//root>main>section>ul>li 생성하기
-let main =document.createElement('main');
-root.appendChild(main);
-let section =document.createElement('section');
-main.appendChild(section);
-let ul =document.createElement('ul');
-section.appendChild(ul);
+    elementMaker('h1',body.children[1]);  
+    elementMaker('main',body.children[2]);
+const root = document.getElementById('root');
+    console.dir(root);
+    elementMaker('section',root.children[0]);
+    elementMaker('section',root.children[0]);
+    root.children[0].children[0].setAttribute('id','left-sect');
+    root.children[0].children[1].setAttribute('id','right-sect');
+    const section = document.getElementById('left-sect');
+    const Rsection = document.getElementById('right-sect');
+    elementMaker('ul',section);
+    elementMaker('ul',Rsection);
+//aside>h1 생성
+//div>main>section>ul 생성
 
-//ul>li 5개 생성하기
-for(let i=0; i<5; i ++){
-let li =document.createElement('li');
-li.textContent=`items-${i}`;
-ul.appendChild(li);}
+for (let i = 0; i < 5; i++) {
+    let li = document.createElement('li');
+    li.textContent = `items-${i}`;
+    section.children[0].appendChild(li); 
+    styleMaker(li,'100%','50px','white');
+    borderMaker(li,'black');
+}
+//ul>li생성
 
-let lis = document.getElementsByTagName('li');
-//test
-console.dir(lis);
-console.dir(ul.children);
-console.dir(ul);
-console.dir(ul.childNodes);
+//------------element 만들기 끝 ------------
 
-//-----궁금한 것-----
-// ul>li를 5개 만들고 그 li들을 lis 라고 선언했습니다.
-//lis들의 스타일이 적용이 안돼서  console.dir(lis) 찾아봤는데 htmlCollection(5)[li,li,li,li,li]라고 나왔습니다.
-//배열인 것 같아서 console.log(lis)[0];찍어봤는데 왜 안나오는지 이 부분이 가장 헷갈립니다!
-
-
-//section2>ul2
-let section2 =document.createElement('section');
-main.appendChild(section2);
-let ul2 =document.createElement('ul');
-section2.appendChild(ul2);
-
-//속성바꾸기
-aside.setAttribute('id',"move-btn");
-section.setAttribute('id',"left-sect");
-section2.setAttribute('id',"right-sect");
-//텍스트 넣기
-h1.textContent='move!';
+body.children[1].textContent='move!';
+body.children[1].style.cssText='border-radius : 50%;position: fixed; bottom: 10px; left: 50vw; transform: translate(-50%, 0);'
+document.body.style.overflowX='hidden';
+section.children[0].style.listStyleType='none';
 
 //스타일 함수
 function styleMaker(name,width,height,backgroundcolor){
@@ -51,24 +48,12 @@ function styleMaker(name,width,height,backgroundcolor){
     name.style.height=height;
     name.style.backgroundColor=backgroundcolor;
 }
-
-styleMaker(aside,'200px','200px','#fff');
+styleMaker(body.children[1],'200px','200px','#fff');
 styleMaker(root,'100vw','100vh','cadetblue');
-styleMaker(main,'500px','500px','');
+styleMaker(root.children[0],'500px','500px','');
 styleMaker(section,'200px','450px','');
-styleMaker(section2,'200px','450px','');
-
-
-
-//
-aside.style.cssText='width: 200px;height: 200px;background-color: #fff;border-radius : 50%;position: fixed; bottom: 10px; left: 50vw; transform: translate(-50%, 0);'
-document.body.style.overflowX='hidden';
-ul.style.listStyleType='none';
-//lis.style.cssText='width: 100%;height: 50px; background-color: #fff; border: 1px solid black; '
-//ul.children.style.cssText='width: 100%;height: 50px; background-color: #fff; border: 1px solid black; ';
-//ul.childNodes.style.cssText='width: 100%;height: 50px; background-color: #fff; border: 1px solid black; ';
-//--x 안됨 ㅠ_ㅠ
-
+styleMaker(Rsection,'200px','450px','');
+styleMaker(Rsection,'200px','450px','');
 
 //display함수
 function displayMaker(Name){
@@ -77,11 +62,10 @@ function displayMaker(Name){
     Name.style.alignItems='center';
 }
 
-displayMaker(aside);
+displayMaker(body.children[1]);
 displayMaker(root);
-displayMaker(main);
+displayMaker(root.children[0]);
 displayMaker(section);
-displayMaker(section2);
 
 //border함수
 function borderMaker(Name,color){
@@ -91,16 +75,9 @@ function borderMaker(Name,color){
     
 }
 borderMaker(section,'black');
-borderMaker(section2,'blue');
-borderMaker(ul,'black');
-borderMaker(root,'black');
-borderMaker(main,'black');
-
-//흑흑흑흑흑
-//흑흑흑흑
-//흑흑흑
-//흑흑
-//흑
+borderMaker(Rsection,'blue');
+borderMaker(root.children[0],'black');
+borderMaker(body.children[2],'black');
 
 
 
