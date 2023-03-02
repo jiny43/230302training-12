@@ -1,11 +1,11 @@
 
-// body>aside> h1
+// body>aside> h1 생성하기
 let aside= document.createElement('aside');
 document.body.appendChild(aside);
 let h1 = document.createElement('h1');
 aside.appendChild(h1)
 
-//root>main>section>ul>li
+//root>main>section>ul>li 생성하기
 let main =document.createElement('main');
 root.appendChild(main);
 let section =document.createElement('section');
@@ -13,6 +13,7 @@ main.appendChild(section);
 let ul =document.createElement('ul');
 section.appendChild(ul);
 
+//ul>li 5개 생성하기
 for(let i=0; i<5; i ++){
 let li =document.createElement('li');
 li.textContent=`items-${i}`;
@@ -26,9 +27,9 @@ console.dir(ul);
 console.dir(ul.childNodes);
 
 //-----궁금한 것-----
-// ul>li를 5개 만들고 그 li들을 lis 라고 선언했습니다,
-//그래서 console.dir(lis) 찾으면 htmlCollection(5)[li,li,li,li,li]라고 나오면 배열인줄 알았는데
-//console.log(lis)[0];은 왜 안나오는지 이유를 알고 싶습니다!
+// ul>li를 5개 만들고 그 li들을 lis 라고 선언했습니다.
+//lis들의 스타일이 적용이 안돼서  console.dir(lis) 찾아봤는데 htmlCollection(5)[li,li,li,li,li]라고 나왔습니다.
+//배열인 것 같아서 console.log(lis)[0];찍어봤는데 왜 안나오는지 이 부분이 가장 헷갈립니다!
 
 
 //section2>ul2
@@ -95,6 +96,11 @@ borderMaker(ul,'black');
 borderMaker(root,'black');
 borderMaker(main,'black');
 
+//흑흑흑흑흑
+//흑흑흑흑
+//흑흑흑
+//흑흑
+//흑
 
 
 
